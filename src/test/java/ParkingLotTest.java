@@ -56,5 +56,18 @@ public class ParkingLotTest {
         //Then
         assertNull(fetchedCar);
     }
+    @Test
+    void should__when__given_(){
+        //Given
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
+        parkingLot.fetch(ticket);
+        //When
+        Car fetchedCar = parkingLot.fetch(ticket);
+
+        //Then
+        assertNull(fetchedCar);
+    }
 
 }
