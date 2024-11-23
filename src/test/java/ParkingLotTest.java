@@ -193,7 +193,7 @@ public class ParkingLotTest {
     //Story 4 Case 2
     @Test
     void should_park_in_2nd_when_boy_park_given_2_not_full_parking_lot(){
-        //Given
+        //Given 2 parking lots with 1 position each
         ParkingBoy parkingBoy = new ParkingBoy(1, 1);
         Car car1 = new Car();
         Car car2 = new Car();
@@ -202,5 +202,23 @@ public class ParkingLotTest {
         Ticket ticket = parkingBoy.park(car2);
         //Then
         assertEquals(ticket.issuedParkingLot, parkingBoy.parkingLot2);
+    }
+    //Story 4 Case 3
+    @Test
+    void should_return_right_car_when_boy_fetch_given_2_different_tickets(){
+        //Given 2 parking lots with 1 position each
+        ParkingBoy parkingBoy = new ParkingBoy(1, 1);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = parkingBoy.park(car1);
+        Ticket ticket2 = parkingBoy.park(car2);
+        //When
+        Car fetchedCar1 = parkingBoy.fetch(ticket1);
+        Car fetchedCar2 = parkingBoy.fetch(ticket2);
+        //Then
+        assertEquals(car1, fetchedCar1);
+        assertEquals(car2, fetchedCar2);
+        assertEquals(ticket1.issuedParkingLot, parkingBoy.parkingLot1);
+        assertEquals(ticket2.issuedParkingLot, parkingBoy.parkingLot2);
     }
 }
