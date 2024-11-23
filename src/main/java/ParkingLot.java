@@ -32,4 +32,8 @@ public class ParkingLot {
         return parkingRecords.size() >= positionsOfParkingLot;
     }
 
+    public int getAvailablePosition() {
+        return positionsOfParkingLot - parkingRecords.size();
+    }
+
 }
