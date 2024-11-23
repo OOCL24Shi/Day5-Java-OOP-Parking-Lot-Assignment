@@ -164,4 +164,18 @@ public class ParkingLotTest {
         assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
                 parkingBoy.fetch(ticket), "Unrecognized parking ticket.");
     }
+    //Story 3 Case 6
+    @Test
+    void should_return_error_msg_when_boy_park_given_no_positions(){
+        //Given only 1 position in the parking lot
+        ParkingBoy parkingBoy = new ParkingBoy(1);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        //When
+        parkingBoy.park(car1);
+        
+        //Then
+        assertThrows(RuntimeExceptionNoAvailablePosition.class, () ->
+                parkingBoy.park(car2), "No available position.");
+    }
 }
