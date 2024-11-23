@@ -36,4 +36,8 @@ public class ParkingLot {
         return positionsOfParkingLot - parkingRecords.size();
     }
 
+    public double getAvailablePositionRate() {
+        return (double) getAvailablePosition() / positionsOfParkingLot;
+    }
+
 }
