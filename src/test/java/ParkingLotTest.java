@@ -205,7 +205,7 @@ public class ParkingLotTest {
     }
     //Story 4 Case 3
     @Test
-    void should_return_right_car_when_boy_fetch_given_2_different_tickets(){
+    void should_return_right_car_when_boy_fetch_given_2_different_tickets_2_parkinglot(){
         //Given 2 parking lots with 1 position each
         ParkingBoy parkingBoy = new ParkingBoy(1, 1);
         Car car1 = new Car();
@@ -223,7 +223,7 @@ public class ParkingLotTest {
     }
     //Story 4 Case 4
     @Test
-    void should_return_error_msg_when_boy_fetch_given_a_unrecognized_ticket(){
+    void should_return_error_msg_when_boy_fetch_given_a_unrecognized_ticket_2_parking_lot(){
         //Given
         ParkingBoy parkingBoy = new ParkingBoy(10, 10);
         Ticket wrongTicket = new Ticket();
@@ -231,5 +231,20 @@ public class ParkingLotTest {
         //Then
         assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
                 parkingBoy.fetch(wrongTicket), "Unrecognized parking ticket.");
+    }
+    //Story 4 Case 5
+    @Test
+    void should_return_error_msg_when_boy_fetch_given_a_used_ticket_2_parking_lot(){
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(10, 10);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        //When
+        parkingBoy.fetch(ticket);
+        
+        //Then
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
+                parkingBoy.fetch(ticket), "Unrecognized parking ticket.");
+        
     }
 }
