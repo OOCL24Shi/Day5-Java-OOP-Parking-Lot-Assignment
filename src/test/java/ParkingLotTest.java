@@ -415,5 +415,17 @@ public class ParkingLotTest {
         assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
                 superSmartParkingBoy.fetch(wrongTicket), "Unrecognized parking ticket.");
     }
-
+    //Story 6 Case 5
+    @Test
+    void should_return_error_msg_when_supersmart_boy_fetch_given_a_used_ticket() {
+        //Given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(10, 10);
+        Car car = new Car();
+        Ticket ticket = superSmartParkingBoy.park(car);
+        //When
+        superSmartParkingBoy.fetch(ticket);
+        //Then
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
+                superSmartParkingBoy.fetch(ticket), "Unrecognized parking ticket.");
+    }
 }
