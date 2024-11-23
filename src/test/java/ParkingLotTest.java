@@ -221,4 +221,15 @@ public class ParkingLotTest {
         assertEquals(ticket1.issuedParkingLot, parkingBoy.parkingLot1);
         assertEquals(ticket2.issuedParkingLot, parkingBoy.parkingLot2);
     }
+    //Story 4 Case 4
+    @Test
+    void should_return_error_msg_when_boy_fetch_given_a_unrecognized_ticket(){
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(10, 10);
+        Ticket wrongTicket = new Ticket();
+        //When
+        //Then
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
+                parkingBoy.fetch(wrongTicket), "Unrecognized parking ticket.");
+    }
 }
