@@ -371,4 +371,18 @@ public class ParkingLotTest {
         //Then
         assertEquals(ticket.issuedParkingLot, superSmartParkingBoy.parkingLot1);
     }
+    //Story 6 Case 2
+    @Test
+    void should_park_in_2nd_when_supersmart_boy_park_given_2nd_has_more_available_positions() {
+        //Given 2nd parking lot has more available positions
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(1, 10);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        //When
+        superSmartParkingBoy.park(car1);
+        Ticket ticket = superSmartParkingBoy.park(car2);
+
+        //Then
+        assertEquals(ticket.issuedParkingLot, superSmartParkingBoy.parkingLot2);
+    }
 }
