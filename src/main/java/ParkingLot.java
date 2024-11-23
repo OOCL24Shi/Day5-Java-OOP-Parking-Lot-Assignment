@@ -22,7 +22,7 @@ public class ParkingLot {
     public Car fetch(Ticket ticket) {
         Car car = parkingRecords.remove(ticket);
         if (car == null) {
-            return null;
+            throw new RuntimeExceptionUnrecognizedParkingTicket();
         }
         return car;
     }

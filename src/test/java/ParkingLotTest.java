@@ -48,16 +48,17 @@ public class ParkingLotTest {
     }
 
     //Story 1 Case 4
+    //Updated for Story 2 Case 1
     @Test
     void should_return_nothing_when_fetch_given_a_wrong_ticket() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Ticket wrongTicket = new Ticket();
         //When
-        Car fetchedCar = parkingLot.fetch(wrongTicket);
 
         //Then
-        assertNull(fetchedCar);
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class,()->
+            parkingLot.fetch(wrongTicket),"Unrecognized parking ticket.");
     }
 
     //Story 1 Case 5
