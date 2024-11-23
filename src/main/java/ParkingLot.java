@@ -15,6 +15,7 @@ public class ParkingLot {
         }
         Ticket ticket = new Ticket();
         parkingRecords.put(ticket, car);
+        ticket.addIssuedParkingLot(this);
         return ticket;
 
     }

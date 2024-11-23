@@ -93,4 +93,19 @@ public class ParkingLotTest {
         assertThrows(RuntimeExceptionNoAvailablePosition.class,()->
                 parkingLot.park(car),"No available position.");
     }
+    //Story 3 Case 1
+    @Test
+    void should_return_a_ticket_when_park_given_a_parking_boy_a_parkinglot(){
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(10);
+        Car car = new Car();
+        //When
+        Ticket ticket = parkingBoy.park(car);
+        
+        //Then
+        assertNotNull(ticket);
+    }
+
+
+
 }
