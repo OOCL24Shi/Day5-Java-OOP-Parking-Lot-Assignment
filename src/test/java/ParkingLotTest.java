@@ -62,6 +62,7 @@ public class ParkingLotTest {
     }
 
     //Story 1 Case 5
+    //Updated for Story 2 Case 2
     @Test
     void should__when__given_() {
         //Given
@@ -70,10 +71,10 @@ public class ParkingLotTest {
         Ticket ticket = parkingLot.park(car);
         parkingLot.fetch(ticket);
         //When
-        Car fetchedCar = parkingLot.fetch(ticket);
 
         //Then
-        assertNull(fetchedCar);
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class,()->
+                parkingLot.fetch(ticket),"Unrecognized parking ticket.");
     }
 
     //Story 1 Case 6
