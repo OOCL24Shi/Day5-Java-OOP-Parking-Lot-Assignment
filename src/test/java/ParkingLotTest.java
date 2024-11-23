@@ -428,4 +428,19 @@ public class ParkingLotTest {
         assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
                 superSmartParkingBoy.fetch(ticket), "Unrecognized parking ticket.");
     }
+    //Story 6 Case 6
+    @Test
+    void should_return_error_msg_when_supersmart_boy_park_given_2_full_parking_lots() {
+        //Given 2 parking lots with 1 position each
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(1, 1);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        superSmartParkingBoy.park(car1);
+        superSmartParkingBoy.park(car2);
+        //When
+        //Then
+        assertThrows(RuntimeExceptionNoAvailablePosition.class, () ->
+                superSmartParkingBoy.park(car3), "No available position.");
+    }
 }
