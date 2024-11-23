@@ -11,7 +11,7 @@ public class ParkingLot {
 
     public Ticket park(Car car) {
         if (parkingRecords.size() >= positionsOfParkingLot) {
-            return null;
+            throw new RuntimeExceptionNoAvailablePosition();
         }
         Ticket ticket = new Ticket();
         parkingRecords.put(ticket, car);

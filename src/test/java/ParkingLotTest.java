@@ -78,6 +78,7 @@ public class ParkingLotTest {
     }
 
     //Story 1 Case 6
+    //Updated for Story 2 Case 3
     @Test
     void should_return_error_when_park_given_no_positions() {
         //Given
@@ -87,8 +88,9 @@ public class ParkingLotTest {
             parkingLot.park(new Car());
         }
         //When
-        Ticket newTicket = parkingLot.park(car);
+
         //Then
-        assertNull(newTicket);
+        assertThrows(RuntimeExceptionNoAvailablePosition.class,()->
+                parkingLot.park(car),"No available position.");
     }
 }
