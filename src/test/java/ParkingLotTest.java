@@ -287,4 +287,22 @@ public class ParkingLotTest {
         //Then
         assertEquals(ticket.issuedParkingLot, smartParkingBoy.parkingLot2);
     }
+    //Story 5 Case 3
+    @Test
+    void should_return_right_car_when_smart_boy_fetch_given_2_different_tickets(){
+        //Given 2 parking lots with 1 position each
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(1, 1);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = smartParkingBoy.park(car1);
+        Ticket ticket2 = smartParkingBoy.park(car2);
+        //When
+        Car fetchedCar1 = smartParkingBoy.fetch(ticket1);
+        Car fetchedCar2 = smartParkingBoy.fetch(ticket2);
+        //Then
+        assertEquals(car1, fetchedCar1);
+        assertEquals(car2, fetchedCar2);
+        assertEquals(ticket1.issuedParkingLot, smartParkingBoy.parkingLot1);
+        assertEquals(ticket2.issuedParkingLot, smartParkingBoy.parkingLot2);
+    }
 }
