@@ -190,4 +190,17 @@ public class ParkingLotTest {
         //Then
         assertEquals(ticket.issuedParkingLot, parkingBoy.parkingLot1);
     }
+    //Story 4 Case 2
+    @Test
+    void should_park_in_2nd_when_boy_park_given_2_not_full_parking_lot(){
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(1, 1);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        //When
+        parkingBoy.park(car1);
+        Ticket ticket = parkingBoy.park(car2);
+        //Then
+        assertEquals(ticket.issuedParkingLot, parkingBoy.parkingLot2);
+    }
 }
