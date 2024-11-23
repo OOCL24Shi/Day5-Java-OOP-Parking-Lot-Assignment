@@ -20,6 +20,9 @@ public class ParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
+        if (ticket.issuedParkingLot == null) {
+            throw new RuntimeExceptionUnrecognizedParkingTicket();
+        }
         return ticket.issuedParkingLot.fetch(ticket);
     }
 }
