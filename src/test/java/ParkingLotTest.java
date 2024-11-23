@@ -5,19 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingLotTest {
     //Story 1 Case 1
     @Test
-    void should_return_a_ticket_when_park_given_a_car(){
+    void should_return_a_ticket_when_park_given_a_car() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         //When
         Ticket ticket = parkingLot.park(car);
-        
+
         //Then
         assertNotNull(ticket);
     }
+
     //Story 1 Case 2
     @Test
-    void should_return_a_car_when_fetch_given_a_ticket(){
+    void should_return_a_car_when_fetch_given_a_ticket() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -28,9 +29,10 @@ public class ParkingLotTest {
         //Then
         assertEquals(car, fetchedCar);
     }
+
     //Story 1 Case 3
     @Test
-    void should_return_right_car_when_fetch_given_two_different_tickets(){
+    void should_return_right_car_when_fetch_given_two_different_tickets() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car1 = new Car();
@@ -44,9 +46,10 @@ public class ParkingLotTest {
         assertEquals(car1, fetchedCar1);
         assertEquals(car2, fetchedCar2);
     }
+
     //Story 1 Case 4
     @Test
-    void should_return_nothing_when_fetch_given_a_wrong_ticket(){
+    void should_return_nothing_when_fetch_given_a_wrong_ticket() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Ticket wrongTicket = new Ticket();
@@ -56,8 +59,10 @@ public class ParkingLotTest {
         //Then
         assertNull(fetchedCar);
     }
+
+    //Story 1 Case 5
     @Test
-    void should__when__given_(){
+    void should__when__given_() {
         //Given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -70,4 +75,18 @@ public class ParkingLotTest {
         assertNull(fetchedCar);
     }
 
+    //Story 1 Case 6
+    @Test
+    void should_return_error_when_park_given_no_positions() {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car car = new Car();
+        for (int i = 0; i < 10; i++) {
+            parkingLot.park(new Car());
+        }
+        //When
+        Ticket newTicket = parkingLot.park(car);
+        //Then
+        assertNull(newTicket);
+    }
 }
