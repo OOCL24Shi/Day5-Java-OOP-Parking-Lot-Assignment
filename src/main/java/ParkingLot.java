@@ -27,4 +27,9 @@ public class ParkingLot {
         }
         return car;
     }
+
+    public boolean isFull() {
+        return parkingRecords.size() >= positionsOfParkingLot;
+    }
+
 }

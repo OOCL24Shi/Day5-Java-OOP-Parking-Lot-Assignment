@@ -178,4 +178,16 @@ public class ParkingLotTest {
         assertThrows(RuntimeExceptionNoAvailablePosition.class, () ->
                 parkingBoy.park(car2), "No available position.");
     }
+    //Story 4 Case 1
+    @Test
+    void should_park_in_1st_when_boy_park_given_2_not_full_parking_lot(){
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(10, 10);
+        Car car = new Car();
+        //When
+        Ticket ticket = parkingBoy.park(car);
+
+        //Then
+        assertEquals(ticket.issuedParkingLot, parkingBoy.parkingLot1);
+    }
 }

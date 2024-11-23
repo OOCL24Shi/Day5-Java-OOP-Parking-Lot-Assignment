@@ -16,7 +16,11 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car) {
-        return parkingLot1.park(car);
+
+        if (!parkingLot1.isFull()) {
+            return parkingLot1.park(car);
+        }
+        return parkingLot2.park(car);
     }
 
     public Car fetch(Ticket ticket) {
