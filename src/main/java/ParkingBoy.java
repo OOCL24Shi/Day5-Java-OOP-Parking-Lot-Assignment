@@ -19,4 +19,7 @@ public class ParkingBoy {
         return parkingLot1.park(car);
     }
 
+    public Car fetch(Ticket ticket) {
+        return ticket.issuedParkingLot.fetch(ticket);
+    }
 }

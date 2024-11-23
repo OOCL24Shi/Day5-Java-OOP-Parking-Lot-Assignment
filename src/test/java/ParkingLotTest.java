@@ -57,8 +57,8 @@ public class ParkingLotTest {
         //When
 
         //Then
-        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class,()->
-            parkingLot.fetch(wrongTicket),"Unrecognized parking ticket.");
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
+                parkingLot.fetch(wrongTicket), "Unrecognized parking ticket.");
     }
 
     //Story 1 Case 5
@@ -73,8 +73,8 @@ public class ParkingLotTest {
         //When
 
         //Then
-        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class,()->
-                parkingLot.fetch(ticket),"Unrecognized parking ticket.");
+        assertThrows(RuntimeExceptionUnrecognizedParkingTicket.class, () ->
+                parkingLot.fetch(ticket), "Unrecognized parking ticket.");
     }
 
     //Story 1 Case 6
@@ -90,22 +90,35 @@ public class ParkingLotTest {
         //When
 
         //Then
-        assertThrows(RuntimeExceptionNoAvailablePosition.class,()->
-                parkingLot.park(car),"No available position.");
+        assertThrows(RuntimeExceptionNoAvailablePosition.class, () ->
+                parkingLot.park(car), "No available position.");
     }
+
     //Story 3 Case 1
     @Test
-    void should_return_a_ticket_when_park_given_a_parking_boy_a_parkinglot(){
+    void should_return_a_ticket_when_park_given_a_parking_boy_a_parkinglot() {
         //Given
         ParkingBoy parkingBoy = new ParkingBoy(10);
         Car car = new Car();
         //When
         Ticket ticket = parkingBoy.park(car);
-        
+
         //Then
         assertNotNull(ticket);
     }
 
+    //Story 3 Case 2
+    @Test
+    void should_return_a_car_when_fetch_given_a_parking_boy_a_parkinglot() {
+        //Given
+        ParkingBoy parkingBoy = new ParkingBoy(10);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        //When
+        Car fetchedCar = parkingBoy.fetch(ticket);
 
+        //Then
+        assertEquals(car, fetchedCar);
+    }
 
 }
