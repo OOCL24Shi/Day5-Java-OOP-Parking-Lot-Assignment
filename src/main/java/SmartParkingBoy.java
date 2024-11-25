@@ -8,7 +8,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
 
     public Ticket park(Car car) {
-        if (!parkingLot1.isFull() && parkingLot1.getAvailablePosition()>=parkingLot2.getAvailablePosition()) {
+        if (parkingLot1.getAvailablePosition()>=parkingLot2.getAvailablePosition()) {
             return parkingLot1.park(car);
         } else {
             return parkingLot2.park(car);
